@@ -7,9 +7,6 @@ public class LanguageSelectionPage {
     AppiumDriver driver;
 
     private By title = By.id("ru.rzd.pass.debug:id/title");
-    private By languageIsRussia = By.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"Русский\"]");
-    private By languageIsEnglish = By.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"English\"]");
-    private By languageIsChina = By.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/name\" and @text=\"简体中文\"]");
     private By buttonNext = By.id("ru.rzd.pass.debug:id/continue_button");
 
     public LanguageSelectionPage(AppiumDriver driver){
