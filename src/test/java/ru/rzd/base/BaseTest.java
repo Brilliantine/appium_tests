@@ -18,10 +18,12 @@ public class BaseTest {
                 .setPlatformName("Android")
                 .setDeviceName("emulator-5554")
                 .setAppPackage("ru.rzd.pass.debug")
-                .setAppActivity("ru.rzd.pass.presentation.feature.start.SplashActivity")
+                .setAppActivity("ru.rzd.app.common.gui.MainActivity")
                 .setNoReset(true);
 
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),options);
+        //ru.rzd.pass.presentation.feature.start.SplashActivity
+
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
     }
 
     @AfterClass
