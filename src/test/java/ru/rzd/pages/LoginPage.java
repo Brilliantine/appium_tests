@@ -20,6 +20,7 @@ public class LoginPage {
     }
 
     public LoginPage enterLogin (String login){
+        driver.findElement(loginInput).clear();
         driver.findElement(loginInput).sendKeys(login);
         return this;
     }
