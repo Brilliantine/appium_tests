@@ -8,9 +8,7 @@ import ru.rzd.pages.MainPage;
 public class LoginTest extends BaseTest {
     @Test
     public void testLoginWithValidData(){
-        MainPage mainPage = new MainPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-        mainPage.tapButtonLogin();
+        LoginPage loginPage = new MainPage(driver).tapButtonLogin();
         loginPage
                 .enterLogin("testovtestov")
                 .enterPassword("Qwerty123")

@@ -15,7 +15,11 @@ public class MainPage {
         this.driver = driver;
     }
 
-    public void tapButtonLogin(){driver.findElement(buttonLogin).click();}
+    public LoginPage tapButtonLogin(){
+        driver.findElement(buttonLogin).click();
+        return new LoginPage(driver);
+
+    }
 
     public void tapButtonSideMenu(){driver.findElement(buttonSideMenu).click();}
 
