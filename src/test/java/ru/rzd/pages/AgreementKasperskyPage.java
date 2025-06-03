@@ -10,21 +10,18 @@ public class AgreementKasperskyPage {
         this.driver = driver;
     }
 
-    public TutorialPage clickButton(String agree){
-        By button;
-        switch (agree){
-            case "agree":
-                button = By.id("ru.rzd.pass.debug:id/accept_button");
-                break;
-
-            case "disagree":
-                button = By.id("ru.rzd.pass.debug:id/cancel_button");
-                break;
-
-            default:
-                throw new IllegalArgumentException("Unknown button ID: " + agree);
+    public TutorialPage confirmKaspersky(AgreementAction action){
+        By button = null;
+        switch (action){
+            case ACCEPT -> button = By.id("ru.rzd.pass.debug:id/accept_button");
+            case DECLINE -> button = By.id("ru.rzd.pass.debug:id/cancel_button");
         }
-        driver.findElement(button).click();
+        if(button!=null){
+            driver.findElement(button).click();
+        }
+        else {
+            throw new IllegalStateException("Не удалось найти кнопку: "+action);
+        }
         return new TutorialPage(driver);
     }
 }
