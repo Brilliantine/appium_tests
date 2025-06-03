@@ -2,6 +2,7 @@ package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import ru.rzd.enums.AgreementAction;
 
 public class AgreementKasperskyPage {
     private AppiumDriver driver;

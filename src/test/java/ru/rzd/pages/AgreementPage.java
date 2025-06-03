@@ -1,6 +1,6 @@
 package ru.rzd.pages;
 
-import ru.rzd.pages.AgreementAction;
+import ru.rzd.enums.AgreementAction;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
