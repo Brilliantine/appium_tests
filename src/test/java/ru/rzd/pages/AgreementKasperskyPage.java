@@ -10,7 +10,7 @@ public class AgreementKasperskyPage {
         this.driver = driver;
     }
 
-    public MainPage clickButton(String agree){
+    public TutorialPage clickButton(String agree){
         By button;
         switch (agree){
             case "agree":
@@ -25,6 +25,6 @@ public class AgreementKasperskyPage {
                 throw new IllegalArgumentException("Unknown button ID: " + agree);
         }
         driver.findElement(button).click();
-        return new MainPage(driver);
+        return new TutorialPage(driver);
     }
 }
