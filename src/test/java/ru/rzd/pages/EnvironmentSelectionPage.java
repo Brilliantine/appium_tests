@@ -19,18 +19,21 @@ public class EnvironmentSelectionPage {
         return driver.findElement(title).getText();
     }
 
+    //Выбор контура. Например "master"
     public EnvironmentSelectionPage selectEnvironment(String environment){
         By environmentOption = By.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + environment + "']");
         driver.findElement(environmentOption).click();
         return this;
     }
 
+    //Выбор ветки. Например, TEST-RELEASE
     public EnvironmentSelectionPage selectBranch(String branch){
         By branchOption = By.xpath("//android.widget.RadioButton[@text='"+ branch +"']");
         driver.findElement(branchOption).click();
         return this;
     }
 
+    //Скролл до кнопки "ПОМЕНЯТЬ КОНТУР" и её нажатие
     public EnvironmentSelectionPage tapChangeContour(){
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
@@ -39,6 +42,7 @@ public class EnvironmentSelectionPage {
         return this;
     }
 
+    //Нажатие кнопки "РОДОЛЖИТЬ"
     public AgreementPage tapNext(){
         driver.findElement(buttonNext).click();
         return new AgreementPage(driver);

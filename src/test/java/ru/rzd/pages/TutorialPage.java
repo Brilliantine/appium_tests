@@ -13,6 +13,7 @@ public class TutorialPage {
         this.driver = driver;
     }
 
+    //Закрываем туториал
     public MainPage tapButtonClose(){
         driver.findElement(buttonClose).click();
         return new MainPage(driver);

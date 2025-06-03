@@ -11,6 +11,7 @@ public class AgreementKasperskyPage {
         this.driver = driver;
     }
 
+    //Нажатие на кнопку "принять/отклонить" согласие
     public TutorialPage confirmKaspersky(AgreementAction action){
         By button = null;
         switch (action){

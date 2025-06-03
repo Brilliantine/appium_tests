@@ -15,15 +15,18 @@ public class MainPage {
         this.driver = driver;
     }
 
+    //Нажатие на кнопку "Войти"
     public LoginPage tapButtonLogin(){
         driver.findElement(buttonLogin).click();
         return new LoginPage(driver);
-
     }
 
+    //Вызов бокового меню
     public void tapButtonSideMenu(){driver.findElement(buttonSideMenu).click();}
 
+    //Нажатие на кнопку Корзина
     public void tapButtonBasket(){driver.findElement(buttonBsket).click();}
 
+    //Нажатие на кнопку поиска расписания
     public void tapButtonSearchTrains(){driver.findElement(buttonSearchTrains).click();}
 }

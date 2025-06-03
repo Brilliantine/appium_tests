@@ -17,12 +17,14 @@ public class LanguageSelectionPage {
         return driver.findElement(title).getText();
     }
 
+    //Выбор языка
     public LanguageSelectionPage selectLanguage(String language) {
         By languageOption = By.xpath("//android.widget.TextView[@resource-id='ru.rzd.pass.debug:id/name' and @text='" + language + "']");
         driver.findElement(languageOption).click();
         return this;
     }
 
+    //Нажатие на кнопку "ПРОДОЛЖИТЬ"
     public EnvironmentSelectionPage tapNext(){
         driver.findElement(buttonNext).click();
         return new EnvironmentSelectionPage(driver);
