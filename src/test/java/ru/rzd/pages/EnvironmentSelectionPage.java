@@ -2,6 +2,7 @@ package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import io.appium.java_client.AppiumBy;
 
 public class EnvironmentSelectionPage {
     private AppiumDriver driver;
@@ -30,10 +31,17 @@ public class EnvironmentSelectionPage {
         return this;
     }
 
+    public EnvironmentSelectionPage tapChangeContour(){
+        driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true))" +
+                        ".scrollIntoView(new UiSelector().resourceId(\"ru.rzd.pass.debug:id/apply_host\"))"
+        )).click();
+        return this;
+    }
+
     public AgreementPage tapNext(){
         driver.findElement(buttonNext).click();
         return new AgreementPage(driver);
     }
 
-    //Надо добавить метод для сролла до кнопки смены контура
 }
