@@ -1,5 +1,6 @@
 package ru.rzd.pages;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -60,5 +61,12 @@ public class BasePage {
     //Получить атрибут
     protected String waitAndGetAttribute(By locator, String attributeName){
         return waitForVisibility(locator).getAttribute(attributeName);
+    }
+    protected void scrollAndClick(By locator) {
+        String id = locator.toString().replace("By.id: ", "");
+        driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true))" +
+                        ".scrollIntoView(new UiSelector().resourceId(\"" + id + "\"))"
+        )).click();
     }
 }

@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
 public class LanguageSelectionPage extends BasePage{
-    AppiumDriver driver;
 
     private final By title = By.id("ru.rzd.pass.debug:id/title");
     private final By buttonNext = By.id("ru.rzd.pass.debug:id/continue_button");
@@ -12,11 +11,13 @@ public class LanguageSelectionPage extends BasePage{
     public LanguageSelectionPage(AppiumDriver driver){
         super(driver);
     }
-
-    public String getTextTitle(){
-        return driver.findElement(title).getText();
+    //Проверка, открыт ли экран выбора языка
+    public boolean isPageDisplayed(){
+        return isElementPresent(title);
     }
-
+    public String getTextTitle(){
+        return waitAndGetText(title);
+    }
     //Выбор языка
     public LanguageSelectionPage selectLanguage(String language) {
         By languageOption = By.xpath("//android.widget.TextView[@resource-id='ru.rzd.pass.debug:id/name' and @text='" + language + "']");
@@ -27,7 +28,6 @@ public class LanguageSelectionPage extends BasePage{
     //Нажатие на кнопку "ПРОДОЛЖИТЬ"
     public EnvironmentSelectionPage tapNext(){
         waitAndClick(buttonNext);
-        //driver.findElement(buttonNext).click();
         return new EnvironmentSelectionPage(driver);
     }
 }

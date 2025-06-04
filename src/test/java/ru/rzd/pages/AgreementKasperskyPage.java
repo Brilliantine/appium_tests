@@ -5,26 +5,24 @@ import org.openqa.selenium.By;
 import ru.rzd.enums.AgreementAction;
 
 public class AgreementKasperskyPage extends BasePage{
-    private AppiumDriver driver;
+
+    private final By acceptButton = By.id("ru.rzd.pass.debug:id/accept_button");
+    private final By declineButton = By.id("ru.rzd.pass.debug:id/cancel_button");
 
     public AgreementKasperskyPage(AppiumDriver driver){
         super(driver);
     }
-
+    //Проверяем, что находимся на экране соглашения Касперского
+    public boolean isPageDisplayed(){
+        return isElementPresent(acceptButton) || isElementPresent(declineButton);
+    }
     //Нажатие на кнопку "принять/отклонить" согласие
     public TutorialPage confirmKaspersky(AgreementAction action){
-        By button = null;
-        switch (action){
-            case ACCEPT -> button = By.id("ru.rzd.pass.debug:id/accept_button");
-            case DECLINE -> button = By.id("ru.rzd.pass.debug:id/cancel_button");
-        }
-        if(button!=null){
-            waitAndClick(button);
-            //driver.findElement(button).click();
-        }
-        else {
-            throw new IllegalStateException("Не удалось найти кнопку: "+action);
-        }
+        By button = switch (action){
+            case ACCEPT -> acceptButton;
+            case DECLINE -> declineButton;
+        };
+        waitAndClick(button);
         return new TutorialPage(driver);
     }
 }
