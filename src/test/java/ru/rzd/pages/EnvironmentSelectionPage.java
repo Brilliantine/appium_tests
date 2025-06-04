@@ -4,7 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import io.appium.java_client.AppiumBy;
 
-public class EnvironmentSelectionPage {
+public class EnvironmentSelectionPage extends BasePage{
     private AppiumDriver driver;
 
     private By title = By.id("ru.rzd.pass.debug:id/title");
@@ -12,7 +12,7 @@ public class EnvironmentSelectionPage {
     private By buttonNext = By.id("ru.rzd.pass.debug:id/continue_button");
 
     public EnvironmentSelectionPage(AppiumDriver driver){
-        this.driver = driver;
+        super(driver);
     }
 
     public String getTitle(){
@@ -22,14 +22,16 @@ public class EnvironmentSelectionPage {
     //Выбор контура. Например "master"
     public EnvironmentSelectionPage selectEnvironment(String environment){
         By environmentOption = By.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + environment + "']");
-        driver.findElement(environmentOption).click();
+        waitAndClick(environmentOption);
+        //driver.findElement(environmentOption).click();
         return this;
     }
 
     //Выбор ветки. Например, TEST-RELEASE
     public EnvironmentSelectionPage selectBranch(String branch){
         By branchOption = By.xpath("//android.widget.RadioButton[@text='"+ branch +"']");
-        driver.findElement(branchOption).click();
+        waitAndClick(branchOption);
+        //driver.findElement(branchOption).click();
         return this;
     }
 
@@ -44,7 +46,8 @@ public class EnvironmentSelectionPage {
 
     //Нажатие кнопки "РОДОЛЖИТЬ"
     public AgreementPage tapNext(){
-        driver.findElement(buttonNext).click();
+        waitAndClick(buttonNext);
+        //driver.findElement(buttonNext).click();
         return new AgreementPage(driver);
     }
 

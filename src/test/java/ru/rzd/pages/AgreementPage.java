@@ -4,11 +4,11 @@ import ru.rzd.enums.AgreementAction;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-public class AgreementPage {
+public class AgreementPage extends BasePage{
     private AppiumDriver driver;
 
     public AgreementPage(AppiumDriver driver){
-        this.driver = driver;
+        super(driver);
     }
 
     //Нажатие на кнопку "принять/отклонить" согласие
@@ -19,7 +19,8 @@ public class AgreementPage {
             case DECLINE -> button = By.id("ru.rzd.pass.debug:id/cancel_button");
         }
         if (button!=null){
-            driver.findElement(button).click();
+            waitAndClick(button);
+            //driver.findElement(button).click();
         }
         else {
             throw new IllegalStateException("Не удалось найти кнопку: "+action);

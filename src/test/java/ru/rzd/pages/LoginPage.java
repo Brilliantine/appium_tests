@@ -3,7 +3,7 @@ package ru.rzd.pages;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
     private AppiumDriver driver;
 
     //Локаторы
@@ -16,23 +16,35 @@ public class LoginPage {
     private By buttonRegistration = By.id("ru.rzd.pass.debug:id/btn_registration");
 
     public LoginPage(AppiumDriver driver){
-        this.driver = driver;
+        super(driver);
     }
-
+    //Ожидание поля логина и ввода в него значения
     public LoginPage enterLogin (String login){
-        driver.findElement(loginInput).clear();
-        driver.findElement(loginInput).sendKeys(login);
+        waitAndSendKeys(loginInput,login);
         return this;
     }
+    //Ожидание поля пароля и ввод в него значения
     public LoginPage enterPassword(String password){
-        driver.findElement(passwordInput).sendKeys(password);
+        waitAndSendKeys(passwordInput,password);
         return this;
     }
+    //Ожидание заголовка и возвращение его текста
     public String getTextTitle(){
-        return driver.findElement(title).getText();
+        return waitAndGetText(title);
     }
-
-    public void tapButtonLogin(){driver.findElement(buttonLogin).click();}
-    public void tapButtonRegistration(){driver.findElement(buttonRegistration).click();}
-    public void tapTermOffer(){driver.findElement(termsOffer).click();}
+    //Ожидание кнопки логи и нажатие на неё
+    public void tapButtonLogin(){
+        waitAndClick(buttonLogin);
+        //driver.findElement(buttonLogin).click();
+    }
+    //Ожидание кнопки регитсрации и нажатие на неё
+    public void tapButtonRegistration(){
+        waitAndClick(buttonRegistration);
+        //driver.findElement(buttonRegistration).click();
+    }
+    //Ожидание поля офферты и нажатие на него
+    public void tapTermOffer(){
+        waitAndClick(termsOffer);
+        //driver.findElement(termsOffer).click();
+    }
 }
