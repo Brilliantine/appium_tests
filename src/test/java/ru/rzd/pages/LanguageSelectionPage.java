@@ -6,8 +6,8 @@ import org.openqa.selenium.By;
 public class LanguageSelectionPage extends BasePage{
     AppiumDriver driver;
 
-    private By title = By.id("ru.rzd.pass.debug:id/title");
-    private By buttonNext = By.id("ru.rzd.pass.debug:id/continue_button");
+    private final By title = By.id("ru.rzd.pass.debug:id/title");
+    private final By buttonNext = By.id("ru.rzd.pass.debug:id/continue_button");
 
     public LanguageSelectionPage(AppiumDriver driver){
         super(driver);

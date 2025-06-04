@@ -4,9 +4,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import ru.rzd.pages.LanguageSelectionPage;
-import ru.rzd.pages.MainPage;
+import ru.rzd.pages.*;
 import ru.rzd.enums.AgreementAction;
 
 import java.net.MalformedURLException;
@@ -14,6 +14,14 @@ import java.net.URL;
 
 public class BaseTest {
     protected AppiumDriver driver;
+
+    //PageObjects
+    protected LanguageSelectionPage languageSelectionPage;
+    protected EnvironmentSelectionPage environmentSelectionPage;
+    protected AgreementPage agreementPage;
+    protected AgreementKasperskyPage agreementKasperskyPage;
+    protected TutorialPage tutorialPage;
+    protected LoginPage loginPage;
     protected MainPage mainPage;
 
     //Метод проходит по стартовым экранам "онбординга" в дев версии приложения
@@ -28,7 +36,7 @@ public class BaseTest {
                 .tapButtonClose();
         return new MainPage(driver);
     }
-    @BeforeMethod
+    @BeforeClass
     public void setUp() throws MalformedURLException{
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName("Android")
