@@ -10,9 +10,6 @@ public class LoginTest extends BaseTest {
     @Test
     public void testLoginWithValidData(){
         LoginPage loginPage = new MainPage(driver).tapButtonLogin();
-        loginPage
-                .enterLogin("testovtestov")
-                .enterPassword("Qwerty123")
-                .tapButtonLogin();
+        MainPage mainPage = new LoginHelper(driver).loginAs("testovtestov","Qwerty123");
     }
 }

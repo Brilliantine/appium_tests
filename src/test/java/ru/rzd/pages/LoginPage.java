@@ -14,6 +14,7 @@ public class LoginPage extends BasePage{
     private By buttonResetPassword = By.id("ru.rzd.pass.debug:id/recovery_login_btn");
     private By termsOffer = By.id("ru.rzd.pass.debug:id/offerta");
     private By buttonRegistration = By.id("ru.rzd.pass.debug:id/btn_registration");
+    private By loginErrorText = By.id("android:id/message");
 
     public LoginPage(AppiumDriver driver){
         super(driver);
@@ -46,5 +47,9 @@ public class LoginPage extends BasePage{
     public void tapTermOffer(){
         waitAndClick(termsOffer);
         //driver.findElement(termsOffer).click();
+    }
+    //Получаем текст ошибки авторизации
+    public String getLoginErrorText(){
+        return waitAndGetText(loginErrorText);
     }
 }
