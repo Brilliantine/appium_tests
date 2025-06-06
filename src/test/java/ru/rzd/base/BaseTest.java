@@ -13,6 +13,8 @@ import ru.rzd.helpers.OnboardingHelper;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.io.IOException;
+import ru.rzd.permission.PermissionManager;
 
 public class BaseTest {
     protected AppiumDriver driver;
@@ -35,10 +37,11 @@ public class BaseTest {
                 .setAppPackage("ru.rzd.pass.debug")
                 .setAppActivity("ru.rzd.pass.feature.appstarter.SplashActivity")
                 .setNoReset(false);
-
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
+        PermissionManager.grantNotificationPermission();
         new OnboardingHelper(driver).completeIfPresents(); //Проходим онбординг
         mainPage = new MainPage(driver);
+
     }
 
     @AfterClass

@@ -69,24 +69,4 @@ public class BasePage {
                         ".scrollIntoView(new UiSelector().resourceId(\"" + id + "\"))"
         )).click();
     }
-    //Обработка всплывающего окна, которое запрашивает разрешение на отправку уведомлений
-    public void handleNotificationPermissionIfPresent(){
-        try {
-            // Ждём 2-3 секунды для появления окна
-            Thread.sleep(2000);
-
-            // Ищем кнопку "Разрешить" по тексту
-            By allowButton = AppiumBy.xpath("//*[@text='Разрешить']");
-
-            if (!driver.findElements(allowButton).isEmpty()) {
-                driver.findElement(allowButton).click();
-                System.out.println("Разрешение на уведомления выдано.");
-            } else {
-                System.out.println("Окно разрешения не появилось.");
-            }
-        } catch (Exception e) {
-            System.out.println("Ошибка при попытке обработать разрешение: " + e.getMessage());
-        }
-
-    }
 }
