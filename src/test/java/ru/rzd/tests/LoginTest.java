@@ -10,6 +10,8 @@ public class LoginTest extends BaseTest {
     @Test
     public void testLoginWithValidData(){
         LoginPage loginPage = new MainPage(driver).tapButtonLogin();
-        MainPage mainPage = new LoginHelper(driver).loginAs("testovtestov","Qwerty123");
+        MainPage mainPage = new MainPage(driver);
+        mainPage.handleNotificationPermissionIfPresent();
+        mainPage = new LoginHelper(driver).loginAs("testovtestov","Qwerty123");
     }
 }
