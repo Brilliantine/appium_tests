@@ -12,6 +12,8 @@ public class EntryProtectionPage extends BasePage{
     private By title = By.id("ru.rzd.pass.debug:id/title");
     private By hint = By.id("ru.rzd.pass.debug:id/hint");
 
+    private ProtectionMethod selectedMethod = ProtectionMethod.NOPROTECT;
+
     public EntryProtectionPage(AppiumDriver driver){
         super(driver);
     }
@@ -24,16 +26,20 @@ public class EntryProtectionPage extends BasePage{
         return waitAndGetText(title);
     }
     //Нажимаем кнопку Продолжить
-    public MainPage tapNext(){
+    public BasePage tapNext(){
         waitAndClick(buttonNext);
-        return new MainPage(driver);
+        return selectedMethod == ProtectionMethod.PROTECT
+                ? new PinCodePage(driver)
+                : new MainPage(driver);
     }
     //Выбираем способ защиты входа
-    public void chooseProtectionMethod(ProtectionMethod method){
+    public EntryProtectionPage chooseProtectionMethod(ProtectionMethod method){
+        selectedMethod = method;
         By button = switch (method){
             case PROTECT -> buttonUseAccessCode;
             case NOPROTECT -> buttonNotUseAccessCode;
         };
         waitAndClick(button);
+        return this;
     }
 }
