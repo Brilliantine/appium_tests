@@ -9,6 +9,7 @@ public class MainPage extends BasePage{
     private By buttonSideMenu = By.id("ru.rzd.pass.debug:id/sign_in_text_view");
     private By buttonBsket = By.id("ru.rzd.pass.debug:id/cart");
     private By buttonSearchTrains = By.id("ru.rzd.pass.debug:id/search_button");
+    private By avatarImage = By.id("ru.rzd.pass.debug:id/initials_view");
 
     public MainPage(AppiumDriver driver){
         super(driver);
@@ -28,4 +29,12 @@ public class MainPage extends BasePage{
     public void tapButtonBasket(){waitAndClick(buttonBsket);}
     //Нажатие на кнопку поиска расписания
     public void tapButtonSearchTrains(){waitAndClick(buttonSearchTrains);}
+    //Проверяем, отображается ли аватар пользователя
+    public boolean isUserAvatarVisible(){
+        return isElementPresent(avatarImage);
+    }
+    //Проверяем, отображается ли кнопка Войти
+    public boolean isLoginButtonVisible(){
+        return isElementPresent(buttonLogin);
+    }
 }
