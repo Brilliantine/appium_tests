@@ -33,7 +33,7 @@ public class BaseTest {
     @BeforeClass
     public void setUp() throws MalformedURLException{
         UiAutomator2Options options = new UiAutomator2Options()
-                .setPlatformName(ConfigReader.get("paltformName"))
+                .setPlatformName(ConfigReader.get("platformName"))
                 .setDeviceName(ConfigReader.get("deviceName"))
                 .setAppPackage(ConfigReader.get("appPackage"))
                 .setAppActivity(ConfigReader.get("appActivity"))

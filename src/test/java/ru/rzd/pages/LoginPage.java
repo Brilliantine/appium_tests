@@ -33,7 +33,7 @@ public class LoginPage extends BasePage{
     public String getTextTitle(){
         return waitAndGetText(title);
     }
-    //Ожидание кнопки логи и нажатие на неё
+    //Ожидание кнопки логина и нажатие на неё
     public void tapButtonLogin(){
         waitAndClick(buttonLogin);
         //driver.findElement(buttonLogin).click();

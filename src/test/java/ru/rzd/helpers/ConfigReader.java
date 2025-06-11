@@ -16,6 +16,10 @@ public class ConfigReader {
         }
     }
     public static String get(String key){
-        return properties.getProperty(key);
+        String value = properties.getProperty(key);
+        if(value == null){
+            throw new RuntimeException("Ключ "+value+" не найден в cinfig.properties");
+        }
+        return value;
     }
 }
