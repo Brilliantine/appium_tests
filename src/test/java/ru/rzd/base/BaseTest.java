@@ -30,6 +30,10 @@ public class BaseTest {
     protected MainPage mainPage;
 
 
+    public AppiumDriver getDriver(){
+        return driver;
+    }
+
     @BeforeClass
     public void setUp() throws MalformedURLException{
         UiAutomator2Options options = new UiAutomator2Options()
