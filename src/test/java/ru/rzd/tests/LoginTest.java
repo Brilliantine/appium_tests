@@ -1,11 +1,13 @@
 package ru.rzd.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ru.rzd.base.BaseTest;
 import ru.rzd.helpers.JsonReader;
 import ru.rzd.helpers.LoginHelper;
+import ru.rzd.helpers.listeners.TestLoggerListener;
 import ru.rzd.models.User;
 import ru.rzd.pages.EntryProtectionPage;
 import ru.rzd.pages.LoginPage;
@@ -13,7 +15,7 @@ import ru.rzd.pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@Listeners(TestLoggerListener.class)
 public class LoginTest extends BaseTest {
     @Test
     public void testLoginWithValidData(){
