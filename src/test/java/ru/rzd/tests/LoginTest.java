@@ -7,6 +7,7 @@ import org.testng.asserts.SoftAssert;
 import ru.rzd.base.BaseTest;
 import ru.rzd.helpers.JsonReader;
 import ru.rzd.helpers.LoginHelper;
+import ru.rzd.helpers.listeners.ScreenshotListener;
 import ru.rzd.helpers.listeners.TestLoggerListener;
 import ru.rzd.models.User;
 import ru.rzd.pages.EntryProtectionPage;
@@ -15,7 +16,7 @@ import ru.rzd.pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Listeners(TestLoggerListener.class)
+@Listeners({TestLoggerListener.class, ScreenshotListener.class})
 public class LoginTest extends BaseTest {
     @Test
     public void testLoginWithValidData(){
@@ -52,5 +53,13 @@ public class LoginTest extends BaseTest {
         softAssert.assertFalse(mainPage.isLoginButtonVisible());
         softAssert.assertAll();*/
 
+    }
+
+    //Проверяю скрины
+    @Test
+    public void testFakeFailure(){
+        assertThat(mainPage.isPageDisplayed())
+                .as("Главный экран отображается")
+                .isFalse();
     }
 }
