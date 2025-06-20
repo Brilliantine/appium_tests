@@ -54,12 +54,4 @@ public class LoginTest extends BaseTest {
         softAssert.assertAll();*/
 
     }
-
-    //Проверяю скрины
-    @Test
-    public void testFakeFailure(){
-        assertThat(mainPage.isPageDisplayed())
-                .as("Главный экран отображается")
-                .isFalse();
-    }
 }
