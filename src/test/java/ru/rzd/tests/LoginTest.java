@@ -7,7 +7,6 @@ import org.testng.asserts.SoftAssert;
 import ru.rzd.base.BaseTest;
 import ru.rzd.helpers.JsonReader;
 import ru.rzd.helpers.LoginHelper;
-import ru.rzd.helpers.listeners.ScreenshotListener;
 import ru.rzd.helpers.listeners.TestLoggerListener;
 import ru.rzd.models.User;
 import ru.rzd.pages.EntryProtectionPage;
@@ -16,19 +15,19 @@ import ru.rzd.pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Listeners({TestLoggerListener.class, ScreenshotListener.class})
+@Listeners({TestLoggerListener.class})
 public class LoginTest extends BaseTest {
     @Test
     public void testLoginWithValidData(){
         //Загрузка данных пользователя из JSON файла
         User user = JsonReader.read("data/user.json",User.class);
 
-        LoginPage loginPage = new MainPage(driver).tapButtonLogin();
-        MainPage mainPage = new LoginHelper(driver).loginAs(user.getUsername(), user.getPassword());
+        LoginPage loginPage = new MainPage(getDriver()).tapButtonLogin();
+        MainPage mainPage = new LoginHelper(getDriver()).loginAs(user.getUsername(), user.getPassword());
         System.out.println("Введен логин: "+user.getUsername());
         System.out.println("Введен пароль: "+user.getPassword());
 
-        EntryProtectionPage entryProtectionPage = new EntryProtectionPage(driver);
+        EntryProtectionPage entryProtectionPage = new EntryProtectionPage(getDriver());
         assertThat(entryProtectionPage.isPageDisplayed())
                 .as("Страница защиты входа должна отображаться")
                         .isTrue();
@@ -53,13 +52,5 @@ public class LoginTest extends BaseTest {
         softAssert.assertFalse(mainPage.isLoginButtonVisible());
         softAssert.assertAll();*/
 
-    }
-
-    //Проверяю скрины
-    @Test
-    public void testFakeFailure(){
-        assertThat(mainPage.isPageDisplayed())
-                .as("Главный экран отображается")
-                .isFalse();
     }
 }

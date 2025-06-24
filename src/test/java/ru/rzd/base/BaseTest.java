@@ -29,6 +29,16 @@ public class BaseTest {
     protected LoginPage loginPage;
     protected MainPage mainPage;
 
+    private static ThreadLocal<BaseTest> instance = new ThreadLocal<>();
+
+
+    public BaseTest(){
+        instance.set(this);
+    }
+
+    public static BaseTest getInstance(){
+        return instance.get();
+    }
 
     public AppiumDriver getDriver(){
         return driver;
