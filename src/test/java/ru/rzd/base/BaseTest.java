@@ -29,17 +29,21 @@ public class BaseTest {
     protected LoginPage loginPage;
     protected MainPage mainPage;
 
+    //Контейнер для хранения уникального driver для каждого потока
     private static ThreadLocal<BaseTest> instance = new ThreadLocal<>();
 
-
+    //При каждом создании класса-наследника кладется текущий экземпляр в контейнер ThreadLocal.
+    // Это позволяет из любого потока получить свой уникальный driver
     public BaseTest(){
         instance.set(this);
     }
 
+    //Возвращает BaseTest для текущего потока
     public static BaseTest getInstance(){
         return instance.get();
     }
 
+    //Позволяет всем классам-наследникам использовать готовый драйвер
     public AppiumDriver getDriver(){
         return driver;
     }
