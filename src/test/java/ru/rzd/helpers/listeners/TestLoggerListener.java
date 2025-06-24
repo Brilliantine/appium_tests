@@ -1,8 +1,11 @@
 package ru.rzd.helpers.listeners;
 
+import io.appium.java_client.AppiumDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import ru.rzd.base.BaseTest;
+import ru.rzd.utils.AllureAttachments;
 
 public class TestLoggerListener implements ITestListener {
 
@@ -27,8 +30,11 @@ public class TestLoggerListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result){
-        System.out.println("[ПРОВАЛ]\n*** Тест: "+result.getName()+" провалился! ***");
-        System.out.println("ПРИЧИНА: "+result.getThrowable());
+        AppiumDriver driver = BaseTest.getInstance().getDriver();
+        if(driver != null){
+            AllureAttachments.captureScreenshot(driver);
+        }
+        AllureAttachments.attachLog("Тест упал: "+result.getName());
     }
 
     @Override

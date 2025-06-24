@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="MySuite" verbose="1" parallel="false">
+    <listeners>
+        <listener class-name="ru.rzd.helpers.listeners.TestLoggerListener"/>
+    </listeners>
+
+    <test name="MyTests">
+        <classes>
+            <class name="ru.rzd.tests.LoginTest"/>
+            <!-- Добавь другие тестовые классы здесь -->
+        </classes>
+    </test>
+</suite>
