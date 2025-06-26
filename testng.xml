@@ -2,6 +2,7 @@
 <suite name="MySuite" verbose="1" parallel="false">
     <listeners>
         <listener class-name="ru.rzd.helpers.listeners.TestLoggerListener"/>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"></listener>
     </listeners>
 
     <test name="MyTests">
