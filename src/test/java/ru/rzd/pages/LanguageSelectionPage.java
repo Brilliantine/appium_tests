@@ -1,6 +1,7 @@
 package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LanguageSelectionPage extends BasePage{
@@ -19,6 +20,7 @@ public class LanguageSelectionPage extends BasePage{
         return waitAndGetText(title);
     }
     //Выбор языка
+    @Step("Выбор языка: {language}")
     public LanguageSelectionPage selectLanguage(String language) {
         By languageOption = By.xpath("//android.widget.TextView[@resource-id='ru.rzd.pass.debug:id/name' and @text='" + language + "']");
         waitAndClick(languageOption);
@@ -26,6 +28,7 @@ public class LanguageSelectionPage extends BasePage{
     }
 
     //Нажатие на кнопку "ПРОДОЛЖИТЬ"
+    @Step("Нажатие на кнопку ПРОДОЛЖИТЬ: {buttonNext}")
     public EnvironmentSelectionPage tapNext(){
         waitAndClick(buttonNext);
         return new EnvironmentSelectionPage(driver);

@@ -1,6 +1,7 @@
 package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import io.appium.java_client.AppiumBy;
 
@@ -22,24 +23,28 @@ public class EnvironmentSelectionPage extends BasePage{
         return waitAndGetText(title);
     }
     //Выбор контура. Например "master"
+    @Step("Выбираем контура: {environment}")
     public EnvironmentSelectionPage selectEnvironment(String environment){
         By environmentOption = By.xpath("//android.widget.TextView[@resource-id=\"ru.rzd.pass.debug:id/tvGroupName\" and @text='" + environment + "']");
         waitAndClick(environmentOption);
         return this;
     }
     //Выбор ветки. Например, TEST-RELEASE
+    @Step("Выбираем ветку: {branch}")
     public EnvironmentSelectionPage selectBranch(String branch){
         By branchOption = By.xpath("//android.widget.RadioButton[@text='"+ branch +"']");
         waitAndClick(branchOption);
         return this;
     }
     //Скролл до кнопки "ПОМЕНЯТЬ КОНТУР" и её нажатие
+    @Step("Скролл до кнопки смены контура: {changeContour}")
     public EnvironmentSelectionPage tapChangeContour(){
         scrollAndClick(changeContour);
         return this;
     }
 
     //Нажатие кнопки "ПРОДОЛЖИТЬ"
+    @Step("{Нажимаем на кнопку ПРОДОЛЖИТЬ: {buttonNext}}")
     public AgreementPage tapNext(){
         waitAndClick(buttonNext);
         return new AgreementPage(driver);

@@ -1,6 +1,7 @@
 package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class TutorialPage extends BasePage{
@@ -16,6 +17,7 @@ public class TutorialPage extends BasePage{
         return isElementPresent(tutorialImage);
     }
     //Закрываем туториал
+    @Step("Нажимаем на кнопку закрытия туториал: {buttonClose}")
     public MainPage tapButtonClose(){
         waitAndClick(buttonClose);
         return new MainPage(driver);
