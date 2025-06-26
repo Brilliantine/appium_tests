@@ -1,6 +1,7 @@
 package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePage{
@@ -20,11 +21,13 @@ public class LoginPage extends BasePage{
         super(driver);
     }
     //Ожидание поля логина и ввода в него значения
+    @Step("Ввод логина: {login}")
     public LoginPage enterLogin (String login){
         waitAndSendKeys(loginInput,login);
         return this;
     }
     //Ожидание поля пароля и ввод в него значения
+    @Step("Ввод пароля: {password}")
     public LoginPage enterPassword(String password){
         waitAndSendKeys(passwordInput,password);
         return this;
@@ -34,16 +37,19 @@ public class LoginPage extends BasePage{
         return waitAndGetText(title);
     }
     //Ожидание кнопки логина и нажатие на неё
+    @Step("Нажатие на кнопку авторизации")
     public void tapButtonLogin(){
         waitAndClick(buttonLogin);
         //driver.findElement(buttonLogin).click();
     }
     //Ожидание кнопки регитсрации и нажатие на неё
+    @Step("Нажатие на кнопку регистрации")
     public void tapButtonRegistration(){
         waitAndClick(buttonRegistration);
         //driver.findElement(buttonRegistration).click();
     }
     //Ожидание поля офферты и нажатие на него
+    @Step("Нажатие на поле офферты")
     public void tapTermOffer(){
         waitAndClick(termsOffer);
         //driver.findElement(termsOffer).click();

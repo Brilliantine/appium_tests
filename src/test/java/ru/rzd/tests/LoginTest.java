@@ -24,8 +24,6 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginPage = new MainPage(getDriver()).tapButtonLogin();
         MainPage mainPage = new LoginHelper(getDriver()).loginAs(user.getUsername(), user.getPassword());
-        System.out.println("Введен логин: "+user.getUsername());
-        System.out.println("Введен пароль: "+user.getPassword());
 
         EntryProtectionPage entryProtectionPage = new EntryProtectionPage(getDriver());
         assertThat(entryProtectionPage.isPageDisplayed())
