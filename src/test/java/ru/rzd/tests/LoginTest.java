@@ -14,8 +14,7 @@ import ru.rzd.pages.LoginPage;
 import ru.rzd.pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-@Listeners({TestLoggerListener.class})
+@Listeners({io.qameta.allure.testng.AllureTestNg.class})
 public class LoginTest extends BaseTest {
     @Test
     public void testLoginWithValidData(){
