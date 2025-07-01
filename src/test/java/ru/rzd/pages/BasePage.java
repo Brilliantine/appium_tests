@@ -7,6 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class BasePage {
     protected AppiumDriver driver;
@@ -62,11 +65,50 @@ public class BasePage {
     protected String waitAndGetAttribute(By locator, String attributeName){
         return waitForVisibility(locator).getAttribute(attributeName);
     }
-    protected void scrollAndClick(By locator) {
+    /*protected void scrollAndClick(By locator) {
         String id = locator.toString().replace("By.id: ", "");
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true))" +
                         ".scrollIntoView(new UiSelector().resourceId(\"" + id + "\"))"
         )).click();
+    }*/
+
+    //Новый универсальный метод скролла и клика
+    protected void scrollAndClick(By locator){
+        //Максимальное количество скроллов
+        int maxScroll = 5;
+
+        //Скролл и клик
+        for (int i = 0; i < maxScroll; i++){
+            try{
+                //Пытаемся найти элемент и кликнуть по нему
+                // Если элемент найден, то кликаем по нему и выходим из метода
+                WebElement element = driver.findElement(locator);
+                element.click();
+                return;
+            } catch (NoSuchElementException e) {
+                //Параметры для скролла
+                Map<String, Object> params = new HashMap<>();
+                // X-кордината начала области скролла
+                params.put("left", 100);
+                //Y-кордината начала области скролла
+                params.put("top", 500);
+                //Ширина области, в которой будт скролл
+                params.put("width", 800);
+                //Высота области, в которой будет скролл
+                params.put("height", 1200);
+                //Направления скролла
+                params.put("direction","down");
+                //Насколько длинным будет скролл (от 0.0 до 1.0)
+                params.put("percent",0.7);
+
+                Boolean canScroll = (Boolean) driver.executeScript("mobile: scrollGesture",params);
+
+                if(!canScroll){
+                    throw new NoSuchElementException("Не удалось найти элемент после скролла" + locator.toString());
+                }
+            }
+        }
+        throw new NoSuchElementException("Не удалось найти элемент после " +maxScroll+ "скроллов:" + locator.toString());
     }
 }

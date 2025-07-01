@@ -17,7 +17,6 @@ public class TutorialPage extends BasePage{
         return isElementPresent(tutorialImage);
     }
     //Закрываем туториал
-    @Step("Нажимаем на кнопку закрытия туториал: {buttonClose}")
     public MainPage tapButtonClose(){
         waitAndClick(buttonClose);
         return new MainPage(driver);

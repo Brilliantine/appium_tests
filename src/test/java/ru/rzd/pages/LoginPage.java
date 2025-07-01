@@ -21,13 +21,13 @@ public class LoginPage extends BasePage{
         super(driver);
     }
     //Ожидание поля логина и ввода в него значения
-    @Step("Ввод логина: {login}")
+    @Step("Ввод логина")
     public LoginPage enterLogin (String login){
         waitAndSendKeys(loginInput,login);
         return this;
     }
     //Ожидание поля пароля и ввод в него значения
-    @Step("Ввод пароля: {password}")
+    @Step("Ввод пароля")
     public LoginPage enterPassword(String password){
         waitAndSendKeys(passwordInput,password);
         return this;

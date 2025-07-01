@@ -1,7 +1,6 @@
 package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import ru.rzd.enums.AgreementAction;
 
@@ -18,7 +17,6 @@ public class AgreementKasperskyPage extends BasePage{
         return isElementPresent(acceptButton) || isElementPresent(declineButton);
     }
     //Нажатие на кнопку "принять/отклонить" согласие
-    @Step("Нажимаем на кнопку: {button}")
     public TutorialPage confirmKaspersky(AgreementAction action){
         By button = switch (action){
             case ACCEPT -> acceptButton;

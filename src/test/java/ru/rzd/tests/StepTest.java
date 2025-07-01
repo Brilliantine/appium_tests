@@ -8,23 +8,23 @@ import org.testng.annotations.Test;
 public class StepTest {
     @Test
     public void testWithSteps() {
-        openApp();
-        login();
-        verifyMainScreen();
+        stepOne();
+        stepTwo();
+        stepThree();
     }
 
-    @Step("Открываем приложение")
-    public void openApp() {
-        System.out.println("App opened");
+    @Step("Шаг 1: Открыть приложение")
+    public void stepOne() {
+        System.out.println("Step 1");
     }
 
-    @Step("Выполняем вход")
-    public void login() {
-        System.out.println("Login success");
+    @Step("Шаг 2: Авторизация")
+    public void stepTwo() {
+        System.out.println("Step 2");
     }
 
-    @Step("Проверяем главный экран")
-    public void verifyMainScreen() {
-        System.out.println("Main screen OK");
+    @Step("Шаг 3: Проверка главной страницы")
+    public void stepThree() {
+        System.out.println("Step 3");
     }
 }

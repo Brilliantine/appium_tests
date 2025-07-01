@@ -18,7 +18,6 @@ public class AgreementPage extends BasePage{
         return isElementPresent(acceptButton) || isElementPresent(declineButton);
     }
     //Нажатие на кнопку "принять/отклонить" согласие
-    @Step("Нажимаем на кнопку: {button}")
     public AgreementKasperskyPage confirmAgreement(AgreementAction action){
         By button = switch (action){
             case ACCEPT -> acceptButton;
