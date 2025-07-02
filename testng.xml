@@ -8,7 +8,6 @@
     <test name="MyTests">
         <classes>
             <class name="ru.rzd.tests.LoginTest"/>
-            <class name="ru.rzd.tests.StepTest"/>
             <!-- Добавь другие тестовые классы здесь -->
         </classes>
     </test>

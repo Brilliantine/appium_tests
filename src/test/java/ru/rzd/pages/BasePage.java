@@ -80,6 +80,11 @@ public class BasePage {
 
         //Скролл и клик
         for (int i = 0; i < maxScroll; i++){
+            //Получаем размеры экрана
+            Dimension screenSize = driver.manage().window().getSize();
+            int screenWidth = screenSize.getWidth(); //Ширина
+            int screenHeight = screenSize.getHeight(); //Высота
+
             try{
                 //Пытаемся найти элемент и кликнуть по нему
                 // Если элемент найден, то кликаем по нему и выходим из метода
@@ -90,13 +95,13 @@ public class BasePage {
                 //Параметры для скролла
                 Map<String, Object> params = new HashMap<>();
                 // X-кордината начала области скролла
-                params.put("left", 100);
+                params.put("left", screenWidth/10);
                 //Y-кордината начала области скролла
-                params.put("top", 500);
+                params.put("top", screenHeight/4);
                 //Ширина области, в которой будт скролл
-                params.put("width", 800);
+                params.put("width", screenWidth*8/10);
                 //Высота области, в которой будет скролл
-                params.put("height", 1200);
+                params.put("height", screenHeight/2);
                 //Направления скролла
                 params.put("direction","down");
                 //Насколько длинным будет скролл (от 0.0 до 1.0)
