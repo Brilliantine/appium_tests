@@ -1,13 +1,10 @@
 package ru.rzd.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import ru.rzd.base.BaseTest;
 import ru.rzd.helpers.JsonReader;
 import ru.rzd.helpers.LoginHelper;
-import ru.rzd.helpers.listeners.TestLoggerListener;
 import ru.rzd.models.User;
 import ru.rzd.pages.EntryProtectionPage;
 import ru.rzd.pages.LoginPage;
@@ -36,8 +33,8 @@ public class LoginTest extends BaseTest {
                 .as("Главная страница должна отображаться")
                 .isTrue();
 
-        assertThat(mainPage.isUserAvatarVisible())
-                .as("Аватар пользователя должен отображаться")
+        assertThat(mainPage.isImageView())
+                .as("Кнопка профиля должна отображаться")
                 .isTrue();
 
         assertThat(mainPage.isLoginButtonVisible())
