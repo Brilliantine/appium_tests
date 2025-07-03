@@ -47,17 +47,16 @@ public class BaseTest {
 
     @Parameters({"udid","port"})
     @BeforeClass
-    public void setUp(String udid, String port) throws MalformedURLException{
+    public void setUp() throws MalformedURLException{   // для паралельного запуска добавь в параметры метода String udid, String port
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName(ConfigReader.get("platformName"))
-                .setDeviceName(udid) // ← используем параметр udid
-                .setUdid(udid)       // ← критично для правильного подключения к устройству
+                //.setDeviceName(udid) //нужен для паралельного запуска тестов
+                //.setUdid(udid) //нужен для паралельного запуска тестов
+                .setDeviceName(ConfigReader.get("deviceName"))
                 .setAppPackage(ConfigReader.get("appPackage"))
                 .setAppActivity(ConfigReader.get("appActivity"))
                 .setNoReset(false);
-        System.out.println("Создаём драйвер для udid: " + udid + " на порту: " + port);
-
-        driver = new AndroidDriver(new URL("http://127.0.0.1:"+port),options);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options); //для паралельного запуска замени 4723 на port
         PermissionManager.grantNotificationPermission();
         new OnboardingHelper(driver).completeIfPresents(); //Проходим онбординг
         mainPage = new MainPage(driver);
