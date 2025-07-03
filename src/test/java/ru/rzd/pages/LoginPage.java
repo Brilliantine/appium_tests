@@ -1,6 +1,8 @@
 package ru.rzd.pages;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
@@ -8,6 +10,8 @@ public class LoginPage extends BasePage{
     private AppiumDriver driver;
 
     //Локаторы
+    //@AndroidFindBy(id = "ru.rzd.pass.debug:id/header")
+    //@iOSXCUITFindBy(id = "ru.rzd.pass.debug:id/header")
     private By title = By.id("ru.rzd.pass.debug:id/header");
     private By loginInput = By.id("ru.rzd.pass.debug:id/login");
     private By passwordInput = By.id("ru.rzd.pass.debug:id/password");
