@@ -3,10 +3,7 @@ package ru.rzd.base;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import ru.rzd.helpers.ConfigReader;
 import ru.rzd.pages.*;
 import ru.rzd.enums.AgreementAction;
@@ -48,19 +45,19 @@ public class BaseTest {
         return driver;
     }
 
+    @Parameters({"udid","port"})
     @BeforeClass
-    public void setUp() throws MalformedURLException{
+    public void setUp(String udid, String port) throws MalformedURLException{
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName(ConfigReader.get("platformName"))
-                .setDeviceName(ConfigReader.get("deviceName"))
+                .setDeviceName(udid) // ← используем параметр udid
+                .setUdid(udid)       // ← критично для правильного подключения к устройству
                 .setAppPackage(ConfigReader.get("appPackage"))
                 .setAppActivity(ConfigReader.get("appActivity"))
-                //.setPlatformName("Android")
-                //.setDeviceName("emulator-5554")
-                //.setAppPackage("ru.rzd.pass.debug")
-                //.setAppActivity("ru.rzd.pass.feature.appstarter.SplashActivity")
                 .setNoReset(false);
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),options);
+        System.out.println("Создаём драйвер для udid: " + udid + " на порту: " + port);
+
+        driver = new AndroidDriver(new URL("http://127.0.0.1:"+port),options);
         PermissionManager.grantNotificationPermission();
         new OnboardingHelper(driver).completeIfPresents(); //Проходим онбординг
         mainPage = new MainPage(driver);
